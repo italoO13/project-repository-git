@@ -15,8 +15,16 @@ const createUser = async (email, password) => {
   return newUser;
 }
 
+const getUserById = async (id) => {
+  const user = await User.findById(id);
+  if(!user) {
+    throw new CustomError(404, 'User not Found');
+  }
+  return user;
+}
 
 module.exports= {
   getUserAll,
-  createUser
+  createUser,
+  getUserById
 }

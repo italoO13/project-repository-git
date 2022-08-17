@@ -1,8 +1,8 @@
-const userController = require('../services/user.service');
+const userService = require('../services/user.service');
 
 const getUserAll = async(req, res, next) => {
   try {
-    const users = await userController.getUserAll();
+    const users = await userService.getUserAll();
     return res.send(users);
   } catch (error) {
     next(error)
@@ -12,7 +12,7 @@ const getUserAll = async(req, res, next) => {
 const createUser = async (req, res, next) => {
   try {
     const {email, password} = req.body;
-    const newUser = await userController.createUser(email, password);
+    const newUser = await userService.createUser(email, password);
     res.status(201).json(newUser);
   } catch (error) {
     console.log(error);
@@ -20,7 +20,19 @@ const createUser = async (req, res, next) => {
   }
 }
 
+const getUserById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await userService.getUserById(id);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
 module.exports = {
   getUserAll,
-  createUser
+  createUser,
+  getUserById
 }
