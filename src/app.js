@@ -7,8 +7,12 @@ App.use(express.json());
 App.use(cors());
 App.use(routes)
 
-App.get('/hello', (req, res) => {
-  res.json({hello: 'world'})
+App.use((err, req, res, next) => {
+  console.log(err)
+  if(!err.code) {
+    return res.status(500).json({message:'Internal server error.'})
+  }
+  return res.status(err.code).json({message: err.message})
 })
 
 export default App;
