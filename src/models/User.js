@@ -23,8 +23,28 @@ const getUserById = async (id) => {
   return user;
 }
 
+const updateUser = async (id, email, password) => {
+  const user = await User.findById(id);
+  if(!user) {
+    throw new CustomError(404, 'User not Found');
+  }
+  await user.updateOne({email, password});
+  return true;
+}
+
+const deleteUser = async (id) => {
+  const user = await User.findById(id);
+  if(!user) {
+    throw new CustomError(404, 'User not Found');
+  }
+  await user.deleteOne();
+  return true;
+}
+
 module.exports= {
   getUserAll,
   createUser,
-  getUserById
+  getUserById,
+  updateUser,
+  deleteUser
 }

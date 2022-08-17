@@ -31,8 +31,36 @@ const getUserById = async (req, res, next) => {
   }
 }
 
+const updateUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {email, password} = req.body;
+    const response = await userService.updateUser(id, email, password);
+    if(response) {
+      res.status(200).json({message:'successfully updated'});
+    }
+    res.status(500).json({message:'Error server'});
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await userService.deleteUser(id);
+    if(response) {
+      res.status(200).json({message:'successfully delete'});
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getUserAll,
   createUser,
-  getUserById
+  getUserById,
+  updateUser,
+  deleteUser
 }

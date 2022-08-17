@@ -20,8 +20,20 @@ const getUserById= async (id) => {
   return user;
 }
 
+const updateUser = async (id, email, password) => {
+ const response = await User.updateUser(id, email, await crypt(password));
+ return response; 
+}
+
+const deleteUser = async(id) => {
+  const response = await User.deleteUser(id);
+  return response;
+}
+
 module.exports = {
   getUserAll,
   createUser,
-  getUserById
+  getUserById,
+  updateUser,
+  deleteUser
 }
