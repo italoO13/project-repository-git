@@ -44,7 +44,23 @@ const createRepo = async(userId, name, url) => {
   return newRepo;
 }
 
+const deleteRepo = async (userId, repoId) => {
+  const user = await User.findById(userId);
+
+  if(!user) {
+    throw new CustomError(404, 'User not exists')
+  }
+
+  const repo = await Repo.findById(repoId);
+  if(!repo) {
+    throw new CustomError(404, 'Repository not exists');
+  }
+  await repo.deleteOne();
+  return true;
+}
+
 module.exports = {
   getRepoAll,
-  createRepo
+  createRepo,
+  deleteRepo
 }

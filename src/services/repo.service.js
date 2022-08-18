@@ -10,8 +10,14 @@ const createRepo = async (userId, name, url) => {
   return repo;
 }
 
+const deleteRepo = async(userId, repoId) => {
+  const response = await Repo.deleteRepo(userId, repoId);
+  return response;
+}
+
 
 module.exports = {
   getRepoAll,
-  createRepo
+  createRepo,
+  deleteRepo
 }
