@@ -21,4 +21,4 @@ const repoSchema = mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model('repo', repoSchema);
+module.exports = mongoose.model('Repo', repoSchema);
