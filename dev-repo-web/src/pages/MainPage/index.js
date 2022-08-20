@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
+import Repositories from "../../components/Repositories";
 import Search from "../../components/Search";
 
 const MainPage = () => {
@@ -19,6 +20,10 @@ const MainPage = () => {
 
   }
 
+  const handleNewRepo = (newRepo) => {
+
+  }
+
   return (
     <div>
       <Header 
@@ -28,23 +33,11 @@ const MainPage = () => {
         onClear={handleClear}
         onSearch={handleSearch}
       />
-      <div className="repositories">
-        <h2 className="title">Repositórios</h2>
-
-        <ul className="list">
-          <li className="item">
-            <p>Titulo do repo</p>
-            <p>tecnologia</p>
-            <button onClick={handleDeleteRepo}>Apagar</button>
-          </li>
-        </ul>
-
-        <div className="new">
-          <label htmlFor="newRepo">Novo Repo:</label>
-          <input type="url" name="newRepo" id="newRepo"/>
-          <button>Adicionar</button>
-        </div>
-      </div>
+      <Repositories
+        repo={[]}
+        onDelete={handleDeleteRepo}
+        onNewRepo={handleNewRepo}
+      />
     </div>
   )
 }
