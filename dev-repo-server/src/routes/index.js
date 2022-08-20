@@ -9,7 +9,7 @@ const routes = express.Router();
 routes.use('/hellow',helloRouter);
 routes.use('/session', sessionRouter)
 
-routes.use(middleAuth);
+// routes.use(middleAuth);
 routes.use('/user', userRouter);
 routes.use('/repo', repoRouter);
 
