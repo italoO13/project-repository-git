@@ -1,7 +1,7 @@
 const Repo = require('../models/Repo');
 
-const getRepoAll = async (userId) => {
-  const response = await Repo.getRepoAll(userId);
+const getRepoAll = async (userId, q) => {
+  const response = await Repo.getRepoAll(userId, q);
   return response;
 }
 

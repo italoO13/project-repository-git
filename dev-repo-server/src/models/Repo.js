@@ -3,7 +3,11 @@ const User = require('../shemaModels/user.shemadb');
 const CustomError = require('../utils/customError');
 
 
-const getRepoAll = async(userId) => {
+const getRepoAll = async(userId, q) => {
+  let query = {};
+  if(q) {
+    query = { url: {$regex: q}}
+  }
 
   const user = await User.findById(userId);
 
@@ -12,7 +16,8 @@ const getRepoAll = async(userId) => {
   }
   
   const repo = await Repo.find({
-    userId
+    userId,
+    ...query
   })
 
   if(!repo) {
@@ -30,7 +35,7 @@ const createRepo = async(userId, name, url) => {
   }
 
   const repo = await Repo.find({
-    name,
+    url,
     userId
   })
   if(!repo) {

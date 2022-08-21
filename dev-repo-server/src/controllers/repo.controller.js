@@ -3,7 +3,8 @@ const repoService = require('../services/repo.service');
 const getRepoAll = async(req, res, next) => {
   try {
     const {userId} = req.params;
-    const repositorys = await repoService.getRepoAll(userId);
+    const { q } = req.query;
+    const repositorys = await repoService.getRepoAll(userId, q);
     res.status(200).json(repositorys);
   } catch (error) {
     next(error);
