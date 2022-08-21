@@ -1,9 +1,12 @@
 import './App.css';
 import AppRoutes from './AppRoutes';
+import ProviderAuth from './contexts/providerAuth';
 
 function App() {
   return (
-    <AppRoutes />
+    <ProviderAuth>
+      <AppRoutes />
+    </ProviderAuth>
   );
 }
 
