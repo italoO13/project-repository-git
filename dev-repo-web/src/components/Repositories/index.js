@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Repositories = ({repo, onDelete, onNewRepo}) => {
+const Repositories = ({repo, onDelete, onNewRepo, loadingError}) => {
   const [newRepo, setNewRepo] = useState('')
 
   return(
@@ -35,6 +35,11 @@ const Repositories = ({repo, onDelete, onNewRepo}) => {
       />
       <button onClick={() => onNewRepo(newRepo)}>Adicionar</button>
     </div>
+    {loadingError.status ==='repo' && (
+      <div>
+        {loadingError.message}
+      </div>
+    )}
   </div>
   )
 }

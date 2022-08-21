@@ -3,25 +3,30 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Repositories from "../../components/Repositories";
 import Search from "../../components/Search";
-import { getRepositories, deleteRepository } from "../../services/api";
+import { getRepositories, deleteRepository, createRepositories } from "../../services/api";
 
 const MainPage = () => {
   const USERID = '62fd35462f7c01b60898ba0a'
-  const QUERY = ''
 
   const [ repo, setRepo ] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingError, setLoadingError] = useState(false)
+  const [loadingError, setLoadingError] = useState({
+    status: '',
+    message:'',
+  })
 
-  const loadRepo = async() => {
+  const loadRepo = async(query) => {
     try {
       setLoading(true);
-      const response = await getRepositories(USERID, QUERY)
+      const response = await getRepositories(USERID, query)
       setRepo(response.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoadingError(true);
+      setLoadingError({
+        status:'critical',
+        message:"Erro crítico ao carregar aplicação"
+      });
     }
   }
 
@@ -33,11 +38,28 @@ const MainPage = () => {
     
   }
 
-  const handleSearch = (query) => {
+  const handleSearch = async(query) => {
+    try {
+      await loadRepo(query);
+    } catch (error) {
+      console.log(error);
+      setLoadingError({
+        status:'critical',
+        message:'Erro crítico ao carregar aplicação'
+      })
+    }
 
   }
-  const handleClear = () => {
-
+  const handleClear = async() => {
+    try {
+      await loadRepo();
+    } catch (error) {
+      console.log(error);
+      setLoadingError({
+        status:'critical',
+        message:'Erro crítico ao carregar aplicação'
+      })
+    }
   }
 
   const handleDeleteRepo = async(userId, repoId) => {
@@ -45,14 +67,26 @@ const MainPage = () => {
     await loadRepo();
   }
 
-  const handleNewRepo = (newRepo) => {
-
+  const handleNewRepo = async(newRepo, userId) => {
+    try {
+      setLoadingError({
+        status:'',
+        message:''
+      })
+      await createRepositories(USERID, newRepo);
+      await loadRepo();
+    } catch (error) {
+      setLoadingError({
+        status:'repo',
+        message:"Repositório já existe, tente cadastrar novamente"
+      })
+    }
   }
 
-  if(loadingError) {
+  if(loadingError.status==='critical') {
     return(
       <div className="loading">
-        Erro ao carregar os dados. <Link to="/login">Voltar</Link>
+        {loadingError.message}<Link to="/login">Voltar</Link>
       </div>
     )
   }
@@ -78,6 +112,7 @@ const MainPage = () => {
         repo={repo}
         onDelete={handleDeleteRepo}
         onNewRepo={handleNewRepo}
+        loadingError={loadingError}
       />
     </div>
   )
