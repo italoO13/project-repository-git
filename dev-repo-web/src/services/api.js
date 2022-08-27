@@ -34,6 +34,15 @@ const getRepoName = (url) => {
   }
 }
 
+
+export const createSession = async(email, password) => {
+  const url = `/session`;
+  return api.post(url, {
+    email,
+    password
+  })
+}
+
 export const deleteRepository = async(userId, repoId) => {
   const url = `/repo/${userId}/${repoId}`
   return api.delete(url);
