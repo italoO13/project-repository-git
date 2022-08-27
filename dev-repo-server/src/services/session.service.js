@@ -14,11 +14,15 @@ const authSession = async(email , password) => {
   if(!check) {
     throw new CustomError(401, 'User or password not found');
   }
-  return jwt.sign(
+  const token =  jwt.sign(
     {id: user.id}, authConfig.secret, {
       expiresIn: authConfig.expiresIn,
     }
   )
+  return {
+    id: user.id, 
+    token
+  }
 };
 
 
