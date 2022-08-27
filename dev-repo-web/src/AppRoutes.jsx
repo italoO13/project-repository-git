@@ -1,16 +1,15 @@
 import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import {Route, Routes} from "react-router-dom"
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
+import ControllSession from "./components/ControllSession";
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<ControllSession><MainPage /></ControllSession>} />
       </Routes>
-    </BrowserRouter>
   );
 }
 

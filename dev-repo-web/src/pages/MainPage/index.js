@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Repositories from "../../components/Repositories";
 import Search from "../../components/Search";
+import AuthContext from "../../contexts/auth";
 import { getRepositories, deleteRepository, createRepositories } from "../../services/api";
 
 const MainPage = () => {
-  const USERID = '62fd35462f7c01b60898ba0a'
 
+  const {user: userId, logout} = useContext(AuthContext)
   const [ repo, setRepo ] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingError, setLoadingError] = useState({
@@ -18,7 +19,7 @@ const MainPage = () => {
   const loadRepo = async(query) => {
     try {
       setLoading(true);
-      const response = await getRepositories(USERID, query)
+      const response = await getRepositories(userId, query)
       setRepo(response.data);
       setLoading(false);
     } catch (error) {
@@ -35,7 +36,7 @@ const MainPage = () => {
   }, [])
 
   const handleLogout = () => {
-    
+    logout();
   }
 
   const handleSearch = async(query) => {
@@ -73,7 +74,7 @@ const MainPage = () => {
         status:'',
         message:''
       })
-      await createRepositories(USERID, newRepo);
+      await createRepositories(userId, newRepo);
       await loadRepo();
     } catch (error) {
       setLoadingError({
