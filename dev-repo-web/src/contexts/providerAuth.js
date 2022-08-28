@@ -34,8 +34,12 @@ const ProviderAuth= ({ children }) => {
       setToken(data.token);
       localStorage.setItem('user', JSON.stringify(data.user.id));
       localStorage.setItem('token', JSON.stringify(data.token));
+      setAlert('');
     } catch (error) {
-      console.log(error);
+      if(error.message.includes('401')) {
+        return setAlert('Email ou senha inválidos')
+      }
+      setAlert('Erro no servidor')
     }
   }
 
@@ -50,6 +54,8 @@ const ProviderAuth= ({ children }) => {
     user, 
     authenticated: !!user,
     token,
+    setAlert, 
+    alert,
     login, 
     logout, 
   }
