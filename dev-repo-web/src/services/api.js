@@ -43,6 +43,14 @@ export const createSession = async(email, password) => {
   })
 }
 
+export const createAcount = async(email, password) => {
+  const url = `/user`;
+  return api.post(url, {
+    email,
+    password
+  })
+}
+
 export const deleteRepository = async(userId, repoId) => {
   const url = `/repo/${userId}/${repoId}`
   return api.delete(url);
