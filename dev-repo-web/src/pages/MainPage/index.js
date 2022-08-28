@@ -68,7 +68,7 @@ const MainPage = () => {
     await loadRepo();
   }
 
-  const handleNewRepo = async(newRepo, userId) => {
+  const handleNewRepo = async(newRepo) => {
     try {
       setLoadingError({
         status:'',
