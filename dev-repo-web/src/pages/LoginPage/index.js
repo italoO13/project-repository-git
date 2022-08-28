@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import { Link } from "react-router-dom";
 import {useNavigate} from 'react-router-dom';
 import AuthContext from "../../contexts/auth";
 
@@ -9,7 +10,7 @@ const LoginPage = () => {
   })
   const navigate = useNavigate()
   const context = useContext(AuthContext);
-  const {login} = context;
+  const {login, alert} = context;
 
   const handleLogin = ({target}) => {
     setUser({...user, [target.name]:target.value})
@@ -40,11 +41,13 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="actions">
-        <button onClick={async() => {
+        <button type="button" onClick={async() => {
           await login(user.email, user.password)
           navigate('/')
           }}>Entrar</button>
       </div>
+      <Link to="/create"><p>Cadastrar uma nova conta</p></Link>
+      {alert && <p>{alert}</p>}
     </div>
   )
 }
