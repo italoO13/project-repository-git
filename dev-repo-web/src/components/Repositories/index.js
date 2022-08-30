@@ -1,7 +1,7 @@
 import React, {useState} from "react";
+import NewRepo from "../NewRepo";
 
 const Repositories = ({repo, onDelete, onNewRepo, loadingError}) => {
-  const [newRepo, setNewRepo] = useState('')
 
   return(
     <div className="repositories">
@@ -24,17 +24,9 @@ const Repositories = ({repo, onDelete, onNewRepo, loadingError}) => {
       </li> */}
     </ul>
 
-    <div className="new">
-      <label htmlFor="newRepo">Novo Repo:</label>
-      <input 
-        type="url"
-        name="newRepo"
-        id="newRepo"
-        onChange={({target}) => setNewRepo(target.value)}
-        value={newRepo}
+      <NewRepo 
+        onNewRepo={onNewRepo}
       />
-      <button onClick={() => onNewRepo(newRepo)}>Adicionar</button>
-    </div>
     {loadingError.status ==='repo' && (
       <div>
         {loadingError.message}
