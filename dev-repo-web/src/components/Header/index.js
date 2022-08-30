@@ -14,7 +14,7 @@ const Header = ({onLogout}) => {
           <h1 className="repo text-white font-bold text-xl">Sistem Repo</h1>
         </div>
         <button className="logout flex items-center">
-            <img className="" src={iconLogout} alt="icone logout"/>
+            <img className="mr-1" src={iconLogout} alt="icone logout"/>
             <p className="text-white font-bold text-xl" onClick={onLogout}>Sair</p>
         </button>
       </div>
