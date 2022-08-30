@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
+import NewRepo from "../../components/NewRepo";
 import Repositories from "../../components/Repositories";
 import Search from "../../components/Search";
 import AuthContext from "../../contexts/auth";
@@ -112,8 +113,10 @@ const MainPage = () => {
       <Repositories
         repo={repo}
         onDelete={handleDeleteRepo}
-        onNewRepo={handleNewRepo}
         loadingError={loadingError}
+      />
+      <NewRepo 
+        onNewRepo={handleNewRepo}
       />
     </div>
   )

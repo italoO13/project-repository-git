@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import NewRepo from "../NewRepo";
+import React from "react";
 
-const Repositories = ({repo, onDelete, onNewRepo, loadingError}) => {
+const Repositories = ({repo, onDelete, loadingError}) => {
 
   return(
     <div className="repositories">
@@ -23,10 +22,6 @@ const Repositories = ({repo, onDelete, onNewRepo, loadingError}) => {
         <button onClick={onDelete}>Apagar</button>
       </li> */}
     </ul>
-
-      <NewRepo 
-        onNewRepo={onNewRepo}
-      />
     {loadingError.status ==='repo' && (
       <div>
         {loadingError.message}
