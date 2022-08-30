@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../Card";
 
 const Repositories = ({repo, onDelete, loadingError}) => {
 
@@ -8,19 +9,11 @@ const Repositories = ({repo, onDelete, loadingError}) => {
 
     <ul className="list">
       {
-        repo.map((rep) => <li key={rep._id} className="item">
-          <div className="info">
-            <p>{rep.name.split('/')[0]}</p>
-            <p>{rep.name.split('/')[1]}</p>
-          </div>
-          <button onClick={() => onDelete(rep.userId,rep._id)}>Apagar</button>
-        </li>)
+        repo.map((rep) => <Card 
+          rep = {rep}
+          onDelete = {onDelete}
+        />)
       }
-      {/* <li className="item">
-        <p>Titulo do repo</p>
-        <p>tecnologia</p>
-        <button onClick={onDelete}>Apagar</button>
-      </li> */}
     </ul>
     {loadingError.status ==='repo' && (
       <div>
