@@ -3,7 +3,7 @@ import React from "react";
 const Card = ({rep, onDelete}) => {
 
   return(
-    <li className="item">
+    <li className="item bg-primary">
       <div className="info">
         <p>{rep.name.split('/')[0]}</p>
         <p>{rep.name.split('/')[1]}</p>
