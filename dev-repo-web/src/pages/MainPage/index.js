@@ -101,7 +101,7 @@ const MainPage = () => {
   }
 
   return (
-    <div>
+    <div className="">
       <Header 
         onLogout ={handleLogout}
       />
