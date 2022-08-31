@@ -6,6 +6,7 @@ import Repositories from "../../components/Repositories";
 import Search from "../../components/Search";
 import AuthContext from "../../contexts/auth";
 import { getRepositories, deleteRepository, createRepositories } from "../../services/api";
+import Loading from "../../components/Loading";
 
 const MainPage = () => {
 
@@ -93,16 +94,15 @@ const MainPage = () => {
     )
   }
 
-  if(loading) {
-    return (
-      <div className="loading">
-        Loading...
-      </div>
-    )
-  }
+  // if(loading) {
+  //   return (
+  //     <Loading />
+  //   )
+  // }
 
   return (
     <div className="">
+      {loading && <Loading />}
       <Header 
         onLogout ={handleLogout}
       />
