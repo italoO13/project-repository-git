@@ -13,9 +13,12 @@ const Header = ({onLogout}) => {
           </div>
           <h1 className="repo text-white font-bold text-xl">Sistem Repo</h1>
         </div>
-        <button className="logout flex items-center">
-            <img className="mr-1" src={iconLogout} alt="icone logout"/>
-            <p className="text-white font-bold text-xl" onClick={onLogout}>Sair</p>
+        <button
+          data-testid='button_logout'
+          onClick={onLogout} 
+          className="logout flex relative items-center">
+            <img className="mr-1 " src={iconLogout} alt="icone logout"/>
+            <p className="text-white font-bold text-xl">Sair</p>
         </button>
       </div>
     </div>
