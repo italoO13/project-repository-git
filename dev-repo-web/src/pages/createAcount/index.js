@@ -35,10 +35,10 @@ const CreateAcount = () => {
   return (
     <div id="createAcount" className="min-h-screen mx-auto">
             <div className="xl:w-1/5 w-1/2 mx-auto max-w-xs min-w-[200px]">
-          <img src={imgLogin} className="mx-auto w-full" alt="imagem acima do login"/>
+          <img src={imgLogin} className="mx-auto w-full" alt="imagem acima do Sign up"/>
       </div>
       <h1 className="font-medium tracking-wide mb-3 text-4xl 
-        md:text-5xl text-center text-secondary">Sing up</h1>
+        md:text-5xl text-center text-secondary">Sign up</h1>
       <div className="Form max-w-xl mx-auto flex flex-col items-center">
         <div className="field flex flex-col w-11/12 md:w-3/4 mb-2">
           <label htmlFor="email" className="opacity-50 font-light	mb-1">Email</label>

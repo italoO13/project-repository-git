@@ -9,7 +9,8 @@ const Repositories = ({repo, onDelete, loadingError}) => {
 
     <ul className="list grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
       {
-        repo.map((rep) => <Card 
+        repo.map((rep, index) => <Card
+          key={index} 
           rep = {rep}
           onDelete = {onDelete}
         />)
