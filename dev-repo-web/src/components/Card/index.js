@@ -16,6 +16,7 @@ const Card = ({rep, onDelete}) => {
         </div>
       </div>
       <button
+        data-testid={`btn-${rep._id}`}
         className="absolute top-3 right-3"
         onClick={() => onDelete(rep.userId,rep._id)}
         >
