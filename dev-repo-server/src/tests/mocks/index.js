@@ -24,7 +24,8 @@ module.exports = {
     "_id": "63019550798af340971e541d",
     "createdAt": "2022-08-21T02:15:44.050Z",
     "updatedAt": "2022-08-21T02:15:44.050Z",
-    "__v": 0
+    "__v": 0,
+    "deleteOne": () => true,
   },
   MOCK_REPO_ALL: [
     {
