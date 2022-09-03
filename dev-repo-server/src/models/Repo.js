@@ -38,8 +38,8 @@ const createRepo = async(userId, name, url) => {
     url,
     userId
   })
-  if(!repo) {
-    throw new CustomError(422, 'repository already exists')
+  if(repo) {
+    throw new CustomError(422, 'Repository already exists')
   }
   const newRepo =  await Repo.create({
     name, 
