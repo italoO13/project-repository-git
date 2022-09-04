@@ -55,7 +55,8 @@ module.exports = {
       "updatedAt": "2022-08-31T14:12:39.492Z",
       "__v": 0
     }
-  ]
+  ],
+  MOCK_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTRmMzY0ZGY5ODM0ZjAyNjQxOGM1OCIsImlhdCI6MTY2MjMxNzYzNSwiZXhwIjoxNjYyOTIyNDM1fQ.iVsykxSfIJp01-UZzdixKhzJuSMo1dOw8i0OmTuc1Oo'
 
 }
 
