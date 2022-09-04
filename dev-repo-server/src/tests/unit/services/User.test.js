@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mockUser = require('../../../models/User');
 const User = require('../../../services/user.service');
-const { MOCK_USER, MOCK_TOKEN, MOCK_ENCODEPASSWORD } = require('../../mocks');
+const { MOCK_USER, MOCK_ENCODEPASSWORD } = require('../../mocks');
 const { expect } = require('chai');
 chai.use(chaiAsPromised)
 
@@ -24,11 +24,11 @@ describe('Verifica as funções da camada de service do User', () => {
     after(() => {
       mockUser.getUserAll.restore();
     })
-    it('Deve retornar um objeto',async() => {
+    it('deve retornar um objeto',async() => {
       const response = await User.getUserAll();
       expect(response).to.be.an('object');
     })
-    it('Deve conter as informações iguais ao MOCK_USER',async() => {
+    it('deve conter as informações iguais ao MOCK_USER',async() => {
       const response = await User.getUserAll();
       expect(response).to.be.equal(MOCK_USER);
     })
@@ -40,11 +40,11 @@ describe('Verifica as funções da camada de service do User', () => {
     after(() => {
       mockUser.createUser.restore();
     })
-    it('Deve retornar um objeto',async() => {
+    it('deve retornar um objeto',async() => {
       const response = await User.createUser();
       expect(response).to.be.an('object');
     })
-    it('Deve conter as informações iguais ao MOCK_USER',async() => {
+    it('deve conter as informações iguais ao MOCK_USER',async() => {
       const response = await User.createUser();
       expect(response).to.be.equal(MOCK_USER);
     })
@@ -56,11 +56,11 @@ describe('Verifica as funções da camada de service do User', () => {
     after(() => {
       mockUser.getUserById.restore();
     })
-    it('Deve retornar um objeto',async() => {
+    it('deve retornar um objeto',async() => {
       const response = await User.getUserById();
       expect(response).to.be.an('object');
     })
-    it('Deve conter as informações iguais ao MOCK_USER',async() => {
+    it('deve conter as informações iguais ao MOCK_USER',async() => {
       const response = await User.getUserById();
       expect(response).to.be.equal(MOCK_USER);
     })
@@ -72,7 +72,7 @@ describe('Verifica as funções da camada de service do User', () => {
     after(() => {
       mockUser.updateUser.restore();
     })
-    it('Deve retornar um boleano igual a true',async() => {
+    it('deve retornar um boleano igual a true',async() => {
       const response = await User.updateUser();
       expect(response).to.be.equal(true);
     })
@@ -84,7 +84,7 @@ describe('Verifica as funções da camada de service do User', () => {
     after(() => {
       mockUser.deleteUser.restore();
     })
-    it('Deve retornar um boleano igual a true',async() => {
+    it('deve retornar um boleano igual a true',async() => {
       const response = await User.deleteUser();
       expect(response).to.be.equal(true);
     })
