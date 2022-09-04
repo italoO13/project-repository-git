@@ -4,13 +4,13 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const CustomError = require('../utils/customError');
 
-const checkPassoword = (passwordEncode, password) => {
-  return bcrypt.compare(passwordEncode, password);
+const checkPassoword = async(passwordEncode, password) => {
+  return bcrypt.compare(password, passwordEncode);
 }
 
 const authSession = async(email , password) => {
   const user = await Session.userByEmail(email);
-  const check = checkPassoword(user.password, password);
+  const check = await checkPassoword(user.password, password);
   if(!check) {
     throw new CustomError(401, 'User or password not found');
   }
@@ -27,5 +27,6 @@ const authSession = async(email , password) => {
 
 
 module.exports = {
-  authSession
+  authSession,
+  checkPassoword
 }
