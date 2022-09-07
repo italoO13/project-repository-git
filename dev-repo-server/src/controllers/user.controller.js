@@ -3,7 +3,7 @@ const userService = require('../services/user.service');
 const getUserAll = async(req, res, next) => {
   try {
     const users = await userService.getUserAll();
-    return res.send(users);
+    return res.status(200).json(users);
   } catch (error) {
     next(error)
   }
@@ -52,6 +52,7 @@ const deleteUser = async (req, res, next) => {
     if(response) {
       res.status(200).json({message:'successfully delete'});
     }
+    res.status(500).json({message:'Error server'});
   } catch (error) {
     next(error);
   }
