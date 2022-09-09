@@ -9,7 +9,7 @@ const { expect } = require('chai');
 chai.use(chaiAsPromised)
 
 describe('Verifica as funções do controller Session', () => {
-  describe('Quando é requisitação a criação de uma nova sessão através da função createSession', () => {
+  describe('Quando é requisitado a criação de uma nova sessão através da função createSession', () => {
     describe('se houver um erro na autenticação', () => {
       const response = {};
       const request= {};

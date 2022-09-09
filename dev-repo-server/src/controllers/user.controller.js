@@ -15,7 +15,6 @@ const createUser = async (req, res, next) => {
     const newUser = await userService.createUser(email, password);
     res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
     next(error)
   }
 }
@@ -26,7 +25,6 @@ const getUserById = async (req, res, next) => {
     const user = await userService.getUserById(id);
     res.status(200).json(user);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 }

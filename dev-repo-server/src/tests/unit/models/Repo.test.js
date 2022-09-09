@@ -45,7 +45,7 @@ describe('Verifica as funções do model Repo', () => {
           RepoMock.find.restore();
         })
 
-        it('deve retornar um erro com a menssagem "Repository not found"', async() => {
+        it('deve retornar um erro com a mensagem "Repository not found"', async() => {
           return expect(Repo.getRepoAll())
             .rejectedWith('Repository not found');
         });
@@ -113,7 +113,7 @@ describe('Verifica as funções do model Repo', () => {
           RepoMock.create.restore();
         })
 
-        it('deve retornar um erro com a menssagem "Repository already exists"', async() => {
+        it('deve retornar um erro com a mensagem "Repository already exists"', async() => {
           return expect(Repo.createRepo())
             .rejectedWith('Repository already exists');
         });
@@ -181,7 +181,7 @@ describe('Verifica as funções do model Repo', () => {
         after(() => {
           RepoMock.findById.restore();
         });
-        it('deve retorna um erro com a messagem "Repository not exists"', async() => {
+        it('deve retorna um erro com a mensagem "Repository not exists"', async() => {
           return expect(Repo.deleteRepo())
             .rejectedWith('Repository not exists');
         })

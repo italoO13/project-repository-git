@@ -87,7 +87,7 @@ describe('Verifica as funções do model User', () => {
         UserMock.findById.restore()
       });
 
-      it('deve retornar um erro com a menssagem "User not Found"', async() => {
+      it('deve retornar um erro com a mensagem "User not Found"', async() => {
         return expect(User.getUserById())
           .rejectedWith('User not Found');
       });
@@ -131,7 +131,7 @@ describe('Verifica as funções do model User', () => {
         UserMock.updateOne.restore()
       });
 
-      it('deve retornar um erro com a menssagem "User not Found"', async() => {
+      it('deve retornar um erro com a mensagem "User not Found"', async() => {
         return expect(User.getUserById())
           .rejectedWith('User not Found');
       });
@@ -168,7 +168,7 @@ describe('Verifica as funções do model User', () => {
         UserMock.findById.restore()
       });
 
-      it('deve retornar um erro com a menssagem "User not Found"', async() => {
+      it('deve retornar um erro com a mensagem "User not Found"', async() => {
         return expect(User.deleteUser())
           .rejectedWith('User not Found');
       });
