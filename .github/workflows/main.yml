@@ -2,18 +2,18 @@ on: [push, pull_request]
 
 jobs:
   test_front:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Verifica o repositório do Git
-      uses: actions/checkout@v2
-    
-    - name: Instala o node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verifica o repositório do Git
+        uses: actions/checkout@v2
       
-    - name: Instalando as dependências
-      run: cd dev-repo-web && npm install
+      - name: Instala o node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+        
+      - name: Instalando as dependências
+        run: echo cd dev-repo-web && npm install
 
-    - name: Rodando testes unitários
-      run: npm test
+      - name: Rodando testes unitários
+        run: npm test
