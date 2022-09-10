@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import AuthContext from "./auth";
-import {createSession} from '../services/api';
+import {api, createSession} from '../services/api';
 import { useNavigate } from "react-router-dom";
 
 const ProviderAuth= ({ children }) => {
@@ -17,6 +17,7 @@ const ProviderAuth= ({ children }) => {
       setUser(JSON.parse(user));
       setToken(JSON.parse(token));
       if(user && token) {
+        api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
         navigate('/');
       }
     }
@@ -32,6 +33,7 @@ const ProviderAuth= ({ children }) => {
       }
       setUser(data.user.id);
       setToken(data.token);
+      api.defaults.headers.Authorization = `Bearer ${data.token}`
       localStorage.setItem('user', JSON.stringify(data.user.id));
       localStorage.setItem('token', JSON.stringify(data.token));
       setAlert('');
@@ -48,6 +50,7 @@ const ProviderAuth= ({ children }) => {
     setToken(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    api.defaults.headers.Authorization = null;
   }
 
   const context = {
