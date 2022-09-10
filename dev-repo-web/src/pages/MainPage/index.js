@@ -45,7 +45,7 @@ const MainPage = () => {
     try {
       await loadRepo(query);
     } catch (error) {
-      console.log(error);
+      console.log('handleSearch', error);
       setLoadingError({
         status:'critical',
         message:'Erro crítico ao carregar aplicação'
@@ -57,7 +57,7 @@ const MainPage = () => {
     try {
       await loadRepo();
     } catch (error) {
-      console.log(error);
+      console.log('handleClear', error);
       setLoadingError({
         status:'critical',
         message:'Erro crítico ao carregar aplicação'

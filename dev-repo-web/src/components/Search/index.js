@@ -23,7 +23,7 @@ const Search = ({onClear, onSearch}) => {
     />
     <div className="m-auto">
       <button
-        onClick={() => onSearch(query)}
+        onClick={async() => onSearch(query)}
         className="drop-shadow-md bg-primary text-white py-2 px-10 md:px-16 md:ml-2 rounded hover:bg-[#229F8B]"
         >
           Procurar
