@@ -14,23 +14,31 @@ describe('Testes que avaliam o funcionamento da pagina principal (MainPage)', ()
     localStorage.clear();
   })
   describe('Header', () =>  {
-    it('verifica se imagem do git, titulo e botão para sair foram renderizados com sucesso', () => {
+    beforeEach(() => {
+      localStorage.setItem('user', JSON.stringify(MOCKUSER.data.user.id));
+      localStorage.setItem('token', JSON.stringify(MOCKUSER.data.token));
+      jest.spyOn(mockApi, 'getRepositories').mockReturnValue([])
+    })
+    afterEach(() => {
+      localStorage.clear();
+    })
+    it('verifica se imagem do git, titulo e botão para sair foram renderizados com sucesso', async() => {
       renderWithRouter('/login')
-      const logoGit = screen.getByRole('img', {name: 'icone do git'});
-      const titleSistem = screen.getByRole('heading', {name: 'Sistem Repo'});
-      const iconLogout = screen.getByRole('img', {name: 'icone logout'});
-      const textLogout = screen.getByText('Sair');
+      const logoGit = await screen.findByRole('img', {name: 'icone do git'});
+      const titleSistem =await  screen.findByRole('heading', {name: 'Sistem Repo'});
+      const iconLogout = await screen.findByRole('img', {name: 'icone logout'});
+      const textLogout = await screen.findByText('Sair');
       expect(logoGit).toBeInTheDocument();
       expect(titleSistem).toBeInTheDocument();
       expect(iconLogout).toBeInTheDocument();
       expect(textLogout).toBeInTheDocument();
     });
-    it('Verifica se ao clicar em sair usuário é redirecionado para a pagina de login', () => {
+    it('Verifica se ao clicar em sair usuário é redirecionado para a pagina de login', async() => {
       renderWithRouter('/login');
-      const buttonLogout = screen.getByTestId('button_logout');
+      const buttonLogout = await screen.findByTestId('button_logout');
       expect(buttonLogout).toBeInTheDocument();
       userEvent.click(buttonLogout);
-      const titleLogin = screen.getByRole('heading', {name: 'Login'});
+      const titleLogin = await screen.findByRole('heading', {name: 'Login'});
       expect(titleLogin).toBeInTheDocument();
     })
   })
