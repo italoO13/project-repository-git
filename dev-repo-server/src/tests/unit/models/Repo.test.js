@@ -125,7 +125,7 @@ describe('Verifica as funções do model Repo', () => {
       })
       describe('repositório ainda não foi cadastrado', () => {
         before(() => {
-          sinon.stub(RepoMock, 'find').resolves(null)
+          sinon.stub(RepoMock, 'find').resolves([])
           sinon.stub(RepoMock, 'create').resolves(MOCK_REPO)
         });
         after(() => {
