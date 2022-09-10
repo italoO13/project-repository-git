@@ -11,6 +11,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Vai até a pasta dev-repo-server
-        run: cd ./dev-repo-server && ls -la
+      - name: Executando testes no servidor
+        run: cd ./dev-repo-server && npm install && npm test
     
