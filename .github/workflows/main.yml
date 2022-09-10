@@ -1,6 +1,22 @@
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
+  test_back:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verifica o repositório do Git
+        uses: actions/checkout@v2
+      
+      - name: Instala o node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Executando testes no Back End
+        run: cd ./dev-repo-server && npm install && npm test
   test_front:
     runs-on: ubuntu-latest
     steps:
@@ -11,15 +27,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-        
-      - name: Indo para para pasta dev-repo-web
-        run: cd dev-repo-web
-        shell: bash
-        
-      - name: Instalando as dependências
-        run: npm install
-        shell: bash
-
-      - name: Rodando testes unitários
-        run: npm test
-        shell: bash
+      - name: Executando testes no front End
+        run: cd ./dev-repo-web && npm install && npm test
+      
