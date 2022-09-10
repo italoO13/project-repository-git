@@ -13,7 +13,7 @@ jobs:
           node-version: 16
         
       - name: Instalando as dependências
-        run: echo cd dev-repo-web && npm install
+        run: cd dev-repo-web && npm install
 
       - name: Rodando testes unitários
         run: npm test
