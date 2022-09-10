@@ -13,13 +13,4 @@ jobs:
           node-version: 16
         
       - name: Indo para para pasta dev-repo-web
-        run: cd dev-repo-web
-        shell: bash
-        
-      - name: Instalando as dependências
-        run: npm install
-        shell: bash
-
-      - name: Rodando testes unitários
-        run: npm test
-        shell: bash
+        run: ls -la
