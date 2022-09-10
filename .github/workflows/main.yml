@@ -20,6 +20,13 @@ jobs:
   test_front:
     runs-on: ubuntu-latest
     steps:
+      - name: Verifica o repositório do Git
+        uses: actions/checkout@v2
+      
+      - name: Instala o node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
       - name: Executando testes no front End
         run: cd ./dev-repo-web && npm install && npm test
       
