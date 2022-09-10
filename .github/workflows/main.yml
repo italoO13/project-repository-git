@@ -12,7 +12,5 @@ jobs:
         with:
           node-version: 16
       - name: Vai até a pasta dev-repo-server
-        run: cd ./dev-repo-server
-        
-      - name: Indo para para pasta dev-repo-web
-        run: ls -la
+        run: cd ./dev-repo-server && ls -la
+    
