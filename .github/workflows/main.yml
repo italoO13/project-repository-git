@@ -12,8 +12,11 @@ jobs:
         with:
           node-version: 16
         
+      - name: Indo para para pasta dev-repo-web
+        run: cd dev-repo-web
+        
       - name: Instalando as dependências
-        run: echo cd dev-repo-web && npm install
+        run: npm install
 
       - name: Rodando testes unitários
         run: npm test
