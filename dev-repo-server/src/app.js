@@ -15,4 +15,4 @@ App.use((err, req, res, next) => {
   return res.status(err.code).json({message: err.message})
 })
 
-export default App;
+module.exports =App;
