@@ -6,6 +6,6 @@ dotenv.config();
 
 require('./database/index')
 
-App.listen(3005, () => {
-  console.log('Ouvindo na porta 3005')
+App.listen(process.env.PORT, () => {
+  console.log(`Ouvindo na porta ${PORT}`)
 })
