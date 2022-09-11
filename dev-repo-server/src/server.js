@@ -3,9 +3,10 @@ import App from "./app";
 const dotenv = require("dotenv");
 dotenv.config();
 
+const PORT = process.env.PORT;
 
 require('./database/index')
 
-App.listen(3005, () => {
-  console.log('Ouvindo na porta 3005')
+App.listen(PORT, () => {
+  console.log(`Ouvindo na porta ${PORT}`)
 })
