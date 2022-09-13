@@ -39,12 +39,13 @@
     - Arquitetura MSC
     CI/CD
     - Github Actions
+    - Heroku e netlify
 
 ---
 
 ##  🎨 Front End - [figma](https://www.figma.com/file/Cq2ADp2GujSsEcO4Qf3yjJ/Dev-Repo?node-id=0%3A1)
 
-Comandos para iniciar Front End
+Comandos para iniciar o Front End
 
 ```
 $ cd dev-repo-web
@@ -55,6 +56,7 @@ $ npm start
 ## Desktop
 
   ## Login
+
 
   <img alt="review layout" src="./imgsReadme/Login.png">
 
@@ -141,7 +143,7 @@ Formato de requisição para o POST e DELETE:
 ## ⚙️ Testes | CI/CD
 
 ### Front End
-  Foi desenvolvido 32 testes unitários utilizado a biblioteca react testing libary, caso deseje rodar os testes localmente execute os seguintes comandos:
+  Foi desenvolvido 32 testes unitários utilizado a biblioteca react testing libary, para rodar os testes localmente execute os seguintes comandos:
 
 ```
 $ cd dev-repo-web
@@ -183,7 +185,13 @@ Imagens do Github Actions rodando:
 
 ---
 
-### Deploy - Em Andamento...
+### Deploy
+
+Foi utilizado o heroku para deploy do backEnd a partir de um container docker, para o front foi utilizado o netflify !
+
+ <a href = "https://dev-repo-server-git.herokuapp.com" target="_blank">Acesse apenas o backEnd aqui !</a>
+ <br>
+  <a href = "https://dev-repo-git.netlify.app/" target="_blank">Acesse a aplicação completa aqui !</a>
 
 <br>
 <br>
