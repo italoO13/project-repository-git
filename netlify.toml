@@ -1,0 +1,4 @@
+[build]
+base ="./dev-repo-web"
+command ="CI= npm run build"
+publish = "./build/"
